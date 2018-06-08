@@ -1,2 +1,2 @@
-# OpenKompany
-Colony hackathon submission
+# ReactReduxBoilerplate
+Lightweight React / Redux boilerplate

@@ -6,11 +6,11 @@ import { AppContainer } from 'react-hot-loader';
 
 import './styles/style.scss';
 
+import Routes from './components/Routes/Routes';
+
 render(
   <AppContainer>
-    <div>
-      Hello World!
-    </div>
+    <Routes />
   </AppContainer>,
   document.getElementById('app'),
 );

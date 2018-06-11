@@ -1,0 +1,27 @@
+@import "../../styles/variables/colors";
+
+.footer {
+  display: flex;
+  padding-top: 100px;
+  height: 216px;
+  background: url("./assets/footer-bg.png") center center no-repeat;
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
+
+  .footer-content {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 75px;
+    color: $purple;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 19px;
+
+    img {
+      width: 40px;
+      margin: 15px auto;
+    }
+  }
+}

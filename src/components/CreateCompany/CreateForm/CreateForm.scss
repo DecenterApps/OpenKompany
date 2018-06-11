@@ -1,0 +1,43 @@
+@import "../../../styles/variables/colors";
+
+.create-form {
+  padding: 62px 0;
+
+  .columns-wrapper {
+    display: flex;
+    .form-column {
+      flex: 0 1 0;
+      flex-wrap: wrap;
+
+      &:first-child {
+        margin-right: 150px;
+      }
+    }
+  }
+
+  .create-form-title {
+    color: $purple;
+    font-weight: bold;
+    font-size: 30px;
+    margin-bottom: 85px;
+  }
+
+  .input-wrapper {
+    margin-bottom: 35px;
+
+    input {
+      width: 289px;
+    }
+  }
+
+  .employees {
+    margin-top: 100px;
+
+    p {
+      font-size: 15px;
+      color: $dark-text-color;
+      font-weight: bold;
+      margin-bottom: 23px;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+.page-header {
+  background: url("./assets/header-bg.png") center center no-repeat;
+  background-size: cover;
+  height: 250px;
+  color: #fff;
+  font-weight: 300;
+
+  .page-header-logo {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    width: 200px;
+    margin: 0 auto;
+    padding: 60px 0;
+
+    img {
+      margin: 15px auto;
+    }
+
+    p {
+      font-size: 25px;
+      font-family: 'Varela Round', sans-serif;
+      font-weight: normal;
+    }
+  }
+}

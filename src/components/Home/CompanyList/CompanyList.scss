@@ -1,0 +1,17 @@
+.company-list {
+  background: url("../../../assets/team-bg.png") top center repeat-y;
+  background-size: 100%;
+
+  .company-list-header {
+    .input-wrapper {
+      float: right;
+    }
+  }
+
+  .list-wrapper {
+    width: 100%;
+    padding: 50px 0;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

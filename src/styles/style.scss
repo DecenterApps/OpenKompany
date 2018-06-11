@@ -3,3 +3,27 @@
 
 // Variables
 @import "variables/colors";
+
+// Globals
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: $transparent-text-color;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: $transparent-text-color;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: $transparent-text-color;
+}

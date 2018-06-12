@@ -1,0 +1,26 @@
+@import "../../../styles/variables/colors";
+
+.tab-button {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: $gray;
+  font-size: 15px;
+  margin-right: 40px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+
+  &:first-child {
+    margin-left: 40px;
+  }
+
+  &.active {
+    background-color: #fff;
+    box-shadow: 0 0 24px rgba(171, 171, 171, 0.2);
+    border-radius: 29.5px;
+    color: $dark-text-color;
+    height: 40px;
+    padding: 0 29px;
+  }
+}

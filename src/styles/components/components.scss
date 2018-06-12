@@ -1,0 +1,42 @@
+@import "../variables/colors";
+
+.triangle-background {
+  background: url("../assets/team-bg.png") top center repeat-y;
+  background-size: 100%;
+}
+
+.dark-text {
+  font-size: 15px;
+  color: $dark-text-color;
+  margin-bottom: 11px;
+
+  &.label {
+    font-weight: bold;
+  }
+}
+
+.light-text {
+  font-size: 15px;
+  color: $gray;
+}
+
+.row {
+  display: flex;
+  margin-bottom: 33px;
+
+  .col-1 {
+    flex-grow: 1;
+    flex-basis: 25%;
+  }
+
+  .col-2 {
+    flex-grow: 2;
+    flex-basis: 50%;
+  }
+}
+
+.separator {
+  margin-top: 17px;
+  margin-bottom: 46px;
+  border: 1px solid rgba(41, 50, 71, 0.1);
+}

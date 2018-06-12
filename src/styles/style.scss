@@ -8,6 +8,8 @@
 
 body {
   font-family: 'Roboto', sans-serif;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .container {
@@ -27,3 +29,6 @@ body {
 ::-ms-input-placeholder { /* Microsoft Edge */
   color: $transparent-text-color;
 }
+
+// Components
+@import "components/components";

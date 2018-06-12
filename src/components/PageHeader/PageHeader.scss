@@ -5,6 +5,21 @@
   color: #fff;
   font-weight: 300;
 
+  .page-header-title {
+    padding-top: 75px;
+    font-size: 25px;
+    color: #fff;
+    font-family: 'Varela Round', sans-serif;
+    margin-bottom: 20px;
+  }
+
+  .page-header-description {
+    color: #fff;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0.02em;
+  }
+
   .page-header-logo {
     display: flex;
     align-content: center;

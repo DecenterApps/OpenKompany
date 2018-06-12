@@ -11,10 +11,11 @@ export default class CreateForm extends React.Component {
 
     this.state = {
       companyName: '',
-      address: '',
+      wallet: '',
       founder: '',
-      description: '',
+      location: '',
       employee: '',
+      vision: '',
     };
 
     this.handleInput = this.handleInput.bind(this);
@@ -39,23 +40,23 @@ export default class CreateForm extends React.Component {
               onChange={this.handleInput}
             />
             <Input
-              name="search"
-              placeholder="Kompany description"
-              value={this.state.description}
-              onChange={this.handleInput}
-            />
-          </div>
-          <div className="form-column">
-            <Input
               name="founder"
               placeholder="Founder's full name"
               value={this.state.founder}
               onChange={this.handleInput}
             />
+          </div>
+          <div className="form-column">
             <Input
               name="address"
               placeholder="Wallet address"
-              value={this.state.address}
+              value={this.state.wallet}
+              onChange={this.handleInput}
+            />
+            <Input
+              name="search"
+              placeholder="Kompany location"
+              value={this.state.location}
               onChange={this.handleInput}
             />
           </div>
@@ -76,8 +77,8 @@ export default class CreateForm extends React.Component {
           <div className="form-column">
             <Input
               name="founder"
-              placeholder="Founder's full name"
-              value={this.state.founder}
+              placeholder="Vision"
+              value={this.state.vision}
               onChange={this.handleInput}
             />
           </div>

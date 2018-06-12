@@ -4,7 +4,7 @@ import './PageHeader.scss';
 
 import logo from '../../assets/logo.png';
 
-const PageHeader = ({ hasLogo, title, description }) => (
+const PageHeader = ({ hasLogo, companyName, description }) => (
   <header className="page-header">
     {
       hasLogo &&
@@ -15,8 +15,9 @@ const PageHeader = ({ hasLogo, title, description }) => (
     }
     {
       !hasLogo &&
-      <div>
-        aa
+      <div className="container">
+        <p className="page-header-title">{companyName}</p>
+        <p className="page-header-description">{description}</p>
       </div>
     }
   </header>

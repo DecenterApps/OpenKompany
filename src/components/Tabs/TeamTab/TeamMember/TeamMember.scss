@@ -1,0 +1,23 @@
+.team-members {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+
+  .team-member {
+    width: 272px;
+
+    .team-member-name {
+      font-family: 'Varela Round', sans-serif;
+      font-size: 25px;
+      line-height: 30px;
+    }
+
+    &:nth-child(3n + 2) {
+      margin: 0 20px;
+    }
+
+    .personal-data {
+
+    }
+  }
+}

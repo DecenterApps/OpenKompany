@@ -1,5 +1,5 @@
 import React from 'react';
 
-export default () => (
-  <div className="separator" />
+export default ({ smallMargin }) => (
+  <div className={`separator ${smallMargin && 'small-margin'}`} />
 )

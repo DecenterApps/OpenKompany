@@ -5,6 +5,7 @@ import { getKompany } from '../../actions/kompanyActions';
 import PageHeader from '../PageHeader/PageHeader';
 import Tabs from '../Tabs/Tabs';
 import TabButton from '../Tabs/TabButton/TabButton';
+import Footer from '../Footer/Footer';
 
 import './KompanyPage.scss';
 
@@ -53,6 +54,7 @@ class KompanyPage extends React.Component {
             </div>
             <Tabs tab={activeTab} kompany={kompany} />
           </div>
+          <Footer />
         </div>
       </div>
     );

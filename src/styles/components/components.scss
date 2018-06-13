@@ -8,7 +8,8 @@
 .dark-text {
   font-size: 15px;
   color: $dark-text-color;
-  margin-bottom: 11px;
+  margin-bottom: 18px;
+  word-wrap: break-word;
 
   &.label {
     font-weight: bold;
@@ -18,11 +19,12 @@
 .light-text {
   font-size: 15px;
   color: $gray;
+  word-wrap: break-word;
 }
 
 .row {
   display: flex;
-  margin-bottom: 33px;
+  margin-bottom: 27px;
 
   .col-1 {
     flex-grow: 1;
@@ -32,6 +34,7 @@
   .col-2 {
     flex-grow: 2;
     flex-basis: 50%;
+    max-width: 50%;
   }
 }
 
@@ -39,4 +42,8 @@
   margin-top: 17px;
   margin-bottom: 46px;
   border: 1px solid rgba(41, 50, 71, 0.1);
+
+  &.small-margin {
+    margin-bottom: 17px;
+  }
 }

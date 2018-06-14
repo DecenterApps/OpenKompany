@@ -1,0 +1,24 @@
+@import "../../styles/variables/colors";
+
+.transactions {
+  .col-2:last-child {
+    text-align: right;
+  }
+  .row {
+    margin: 0;
+  }
+  .light-text {
+    margin-bottom: 15px;
+  }
+
+  .dark-text {
+    margin-bottom: 18px;
+  }
+
+  .price {
+    text-align: right;
+    color: $gray;
+    font-size: 25px;
+    font-weight: 300;
+  }
+}

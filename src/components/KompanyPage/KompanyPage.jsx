@@ -14,9 +14,11 @@ class KompanyPage extends React.Component {
     super(props);
     this.state = {
       activeTab: 'home',
+      isPaymentsInTab: true,
     };
 
     this.setActiveTab = this.setActiveTab.bind(this);
+    this.changePayments = this.changePayments.bind(this);
   }
 
   componentDidMount() {
@@ -27,12 +29,18 @@ class KompanyPage extends React.Component {
   setActiveTab(tab) {
     this.setState({
       activeTab: tab,
-    })
+    });
+  }
+
+  changePayments() {
+    this.setState({
+      isPaymentsInTab: !this.state.isPaymentsInTab,
+    });
   }
 
   render() {
     const { kompany } = this.props;
-    const { activeTab } = this.state;
+    const { activeTab, isPaymentsInTab } = this.state;
 
     const tabs = ['home', 'team', 'transactions', 'payments'];
 
@@ -48,7 +56,13 @@ class KompanyPage extends React.Component {
             <div className="tabs-wrapper">
               {
                 tabs.map(tab => (
-                  <TabButton tab={tab} activeTab={activeTab} onClick={this.setActiveTab} />
+                  <TabButton
+                    tab={tab}
+                    activeTab={activeTab}
+                    onClick={this.setActiveTab}
+                    isPaymentsInTab={isPaymentsInTab}
+                    changePayments={this.changePayments}
+                  />
                 ))
               }
             </div>

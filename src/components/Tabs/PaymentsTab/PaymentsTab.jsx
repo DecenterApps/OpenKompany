@@ -3,7 +3,9 @@ import React from 'react';
 class PaymentsTab extends React.Component {
   render() {
     return (
-      <div>d</div>
+      <div>
+        Payments
+      </div>
     )
   }
 }

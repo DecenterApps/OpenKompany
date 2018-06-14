@@ -8,7 +8,7 @@
 .dark-text {
   font-size: 15px;
   color: $dark-text-color;
-  margin-bottom: 18px;
+  margin-bottom: 5px;
   word-wrap: break-word;
 
   &.label {
@@ -20,6 +20,16 @@
   font-size: 15px;
   color: $gray;
   word-wrap: break-word;
+  margin-bottom: 18px;
+  font-weight: 300;
+
+  a {
+    text-decoration: none;
+
+    &:visited, &:active {
+      color: $gray;
+    }
+  }
 }
 
 .row {

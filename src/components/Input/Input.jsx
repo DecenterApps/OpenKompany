@@ -12,23 +12,42 @@ const Input = ({
   value = '',
   onChange = () => {},
   wideButton = false,
+  textarea = false,
+  onButtonClick = () => {},
 }) => (
-  <form className="input-wrapper">
-    <input
-      style={{ width, height }}
-      type={type}
-      name={name}
-      value={value}
-      placeholder={placeholder}
-      onChange={onChange}
-    />
+  <div className="input-wrapper">
+    {
+      !textarea &&
+      <input
+        style={{ width, height }}
+        type={type}
+        name={name}
+        value={value}
+        placeholder={placeholder}
+        onChange={onChange}
+      />
+    }
+    {
+      textarea &&
+      <textarea
+        style={{ width, height }}
+        name={name}
+        value={value}
+        placeholder={placeholder}
+        onChange={onChange}
+      />
+    }
     {
       buttonContent !== null &&
-      <button style={{ height }} className={wideButton && 'wide'}>
+      <button
+        onClick={onButtonClick}
+        style={{ height }}
+        className={wideButton && 'wide'}
+      >
         {buttonContent}
       </button>
     }
-  </form>
+  </div>
 );
 
 export default Input;

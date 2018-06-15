@@ -7,8 +7,9 @@ const Button = ({
   width = 'auto',
   height = '36px',
   marginRight = '0',
+  onClick = () => {},
 }) => (
-  <button style={{ width, height, marginRight }} className="default-button">
+  <button onClick={onClick} style={{ width, height, marginRight }} className="default-button">
     {text}
   </button>
 );

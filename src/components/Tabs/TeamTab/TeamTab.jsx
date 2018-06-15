@@ -5,66 +5,15 @@ import Button from '../../Button/Button';
 
 class TeamTab extends React.Component {
   render() {
-    const teamMembers = [
-      {
-        name: 'Carlos Torres',
-        contact: 'carlos@name.com',
-        position: 'Front-end Engineer',
-        salary: '1500$',
-      },
-      {
-        name: 'Carlos Torres',
-        contact: 'randomemail@gmail.com',
-        position: 'Front-end Engineer',
-        salary: '1500$',
-      },
-      {
-        name: 'Carlos Torres',
-        contact: 'carlos@name.com',
-        position: 'Front-end Engineer',
-        salary: '1500$',
-      },
-      {
-        name: 'Carlos Torres',
-        contact: 'carlos@name.com',
-        position: 'Front-end Engineer',
-        salary: '1500$',
-      }, {
-        name: 'Carlos Torres',
-        contact: 'carlos@name.com',
-        position: 'Front-end Engineer',
-        salary: '1500$',
-      },
-      {
-        name: 'Carlos Torres',
-        contact: 'carlos@name.com',
-        position: 'Front-end Engineer',
-        salary: '1500$',
-      },
-      {
-        name: 'Carlos Torres',
-        contact: 'carlos@name.com',
-        position: 'Front-end Engineer',
-        salary: '1500$',
-      },
-      {
-        name: 'Carlos Torres',
-        contact: 'carlos@name.com',
-        position: 'Front-end Engineer',
-        salary: '1500$',
-      }, {
-        name: 'Carlos Torres',
-        contact: 'carlos@name.com',
-        position: 'Front-end Engineer',
-        salary: '1500$',
-      },
-    ];
+    const {
+      kompany,
+    } = this.props;
 
     return (
       <div>
         <div className="team-members">
           {
-            teamMembers.map(member => (
+            kompany.data.employees.map(member => (
               <TeamMember member={member} />
             ))
           }

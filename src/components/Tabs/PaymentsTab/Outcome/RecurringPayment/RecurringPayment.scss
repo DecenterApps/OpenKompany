@@ -1,0 +1,36 @@
+@import "../../../../../styles/variables/colors";
+
+.recurring-payments {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 550px;
+
+  .recurring-payment {
+    max-width: 225px;
+    margin-bottom: 40px;
+
+    .payment-name {
+      font-size: 15px;
+      color: $dark-text-color;
+      font-weight: 300;
+      margin-bottom: 16px;
+    }
+
+    .payment-info {
+      span {
+        display: inline-block;
+        width: 140px;
+        padding-bottom: 8px;
+        margin-right: 11px;
+        border-bottom: 1px solid rgba(41, 50, 71, 0.1);
+        font-weight: 300;
+      }
+    }
+    .payment-date {
+      color: $gray;
+      margin-top: 10px;
+      font-size: 10px;
+    }
+  }
+}

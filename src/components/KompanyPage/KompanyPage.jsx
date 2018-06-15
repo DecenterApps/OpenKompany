@@ -66,7 +66,11 @@ class KompanyPage extends React.Component {
                 ))
               }
             </div>
-            <Tabs tab={activeTab} kompany={kompany} />
+            <Tabs
+              tab={activeTab}
+              kompany={kompany}
+              isPaymentsInTab={isPaymentsInTab}
+            />
           </div>
           <Footer />
         </div>

@@ -1,0 +1,40 @@
+@import "../../../../../styles/variables/colors";
+
+.pay-employee {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+
+  button {
+    margin: 0 15px;
+  }
+
+  .label-pay {
+    display: inline-block;
+    text-align: center;
+    color: #000;
+    font-size: 15px;
+    width: 74px;
+    margin: 0 15px;
+  }
+
+  .date-payed {
+    color: $gray;
+    font-size: 10px;
+    line-height: 10px;
+  }
+
+
+  .employee-info {
+    width: 330px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(41, 50, 71, 0.1);
+    padding-bottom: 8px;
+
+    .light-text, .dark-text {
+      margin: 0;
+    }
+  }
+}

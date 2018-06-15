@@ -33,6 +33,7 @@ module.exports = {
     'react/prefer-stateless-function': 0,
     'semi': 0,
     'react/prop-types': 0,
+    'react/jsx-no-bind': 0,
 },
   globals: {
     window: true,

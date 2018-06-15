@@ -5,7 +5,7 @@ import TeamTab from './TeamTab/TeamTab';
 import TransactionsTab from './TransactionsTab/TransactionsTab';
 import PaymentsTab from './PaymentsTab/PaymentsTab';
 
-const Tabs = ({ tab, kompany }) => (
+const Tabs = ({ tab, kompany, isPaymentsInTab }) => (
   <div>
     {
       tab === 'home' &&
@@ -21,7 +21,7 @@ const Tabs = ({ tab, kompany }) => (
     }
     {
       tab === 'payments' &&
-      <PaymentsTab kompany={kompany} />
+      <PaymentsTab kompany={kompany} isPaymentsInTab={isPaymentsInTab} />
     }
   </div>
 );

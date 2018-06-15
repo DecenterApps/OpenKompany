@@ -47,10 +47,55 @@ export const getKompany = id => (dispatch) => {
       id: 12,
       legalID: '1356354r2342',
       employees: [
-        'Patrick Morris',
-        'Lynda Franklin',
-        'Leticia McGuire',
-        'Edward Guzman',
+        {
+          name: 'Carlos Torres',
+          contact: 'carlos@name.com',
+          position: 'Front-end Engineer',
+          salary: '1500$',
+        },
+        {
+          name: 'Carlos Torres',
+          contact: 'randomemail@gmail.com',
+          position: 'Front-end Engineer',
+          salary: '1500$',
+        },
+        {
+          name: 'Carlos Torres',
+          contact: 'carlos@name.com',
+          position: 'Front-end Engineer',
+          salary: '1500$',
+        },
+        {
+          name: 'Carlos Torres',
+          contact: 'carlos@name.com',
+          position: 'Front-end Engineer',
+          salary: '1500$',
+        }, {
+          name: 'Carlos Torres',
+          contact: 'carlos@name.com',
+          position: 'Front-end Engineer',
+          salary: '1500$',
+        },
+      ],
+      recurringPayments: [
+        {
+          name: 'Cloud',
+          value: 250,
+          address: '',
+          day: '21',
+        },
+        {
+          name: 'Hosting',
+          value: 100.3,
+          address: '',
+          day: '13',
+        },
+        {
+          name: 'Hosting',
+          value: 100.3,
+          address: '',
+          day: '13',
+        },
       ],
     };
     dispatch(getKompanySuccess(mockData));

@@ -32,6 +32,13 @@
   }
 }
 
+.section-title {
+  font-family: 'Varela Round', sans-serif;
+  font-size: 25px;
+  color: $dark-text-color;
+  margin-bottom: 25px;
+}
+
 .row {
   display: flex;
   margin-bottom: 27px;
@@ -55,5 +62,8 @@
 
   &.small-margin {
     margin-bottom: 17px;
+  }
+  &.large-margin {
+    margin: 50px 0;
   }
 }

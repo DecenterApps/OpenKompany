@@ -4,15 +4,15 @@ import './PayEmployee.scss';
 import Button from '../../../../Button/Button';
 
 const PayEmployee = ({
-  name,
-  salary,
+  employeeName,
+  employeeSalary,
   handlePay,
-  payedDate,
+  payedDate = '24.5.2016.',
 }) => (
   <div className="pay-employee">
     <div className="employee-info">
-      <span className="light-text">{name}</span>
-      <span className="dark-text">{salary}</span>
+      <span className="light-text">{employeeName}</span>
+      <span className="dark-text">{employeeSalary}</span>
     </div>
     {
       !payedDate &&

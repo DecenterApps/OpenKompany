@@ -43,7 +43,7 @@ class Outcome extends React.Component {
 
     const { employees } = kompany.data;
 
-    employees[2].payedDate = '24.2.2018';
+    const recurringPayments = kompany.data.recurringPayments || [];
 
     return (
       <div className="section-outcome">
@@ -81,7 +81,7 @@ class Outcome extends React.Component {
 
         <div className="recurring-payments">
           {
-            kompany.data.recurringPayments
+            recurringPayments
               .map((payment, i) => <RecurringPayment {...payment} />)
           }
         </div>

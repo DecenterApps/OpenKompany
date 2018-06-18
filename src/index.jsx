@@ -11,8 +11,6 @@ import './styles/style.scss';
 
 import Routes from './components/Routes/Routes';
 
-import './services/ipfsService';
-
 render(
   <AppContainer>
     <Provider store={store}>

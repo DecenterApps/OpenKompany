@@ -7,6 +7,7 @@ import Button from '../../Button/Button';
 import Modal from '../../Modal/Modal';
 
 import { uploadFile } from '../../../services/ipfsService';
+import { saveKompany } from '../../../services/ethereumService';
 
 export default class CreateForm extends React.Component {
   constructor(props) {
@@ -65,6 +66,9 @@ export default class CreateForm extends React.Component {
       employees: this.state.employees,
     };
     const hash = await uploadFile(kompany);
+
+    kompany.hash = hash;
+    saveKompany(kompany);
 
     console.log(hash);
   }
@@ -218,6 +222,7 @@ export default class CreateForm extends React.Component {
               <Input
                 name="employeeSalary"
                 placeholder="Salary"
+                type="number"
                 value={this.state.employeeSalary}
                 onChange={this.handleInput}
                 width="216px"

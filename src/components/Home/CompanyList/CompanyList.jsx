@@ -27,6 +27,8 @@ class CompanyList extends React.Component {
   }
 
   render() {
+    const kompanies = JSON.parse(localStorage.getItem('kompanies')) || [];
+
     return (
       <div className="company-list">
         <div className="container">
@@ -46,98 +48,7 @@ class CompanyList extends React.Component {
           </div>
           <div className="list-wrapper">
             {
-              [
-                {
-                  companyName: 'OpenKompany',
-                  numOfEmployees: 14,
-                  founder: 'Carlos Torres',
-                  id: 0,
-                },
-                {
-                  companyName: 'OpenKompany',
-                  numOfEmployees: 14,
-                  founder: 'Carlos Torres',
-                  id: 1,
-                },
-                {
-                  companyName: 'OpenKompany',
-                  numOfEmployees: 14,
-                  founder: 'Carlos Torres',
-                  id: 2,
-                },
-                {
-                  companyName: 'OpenKompany',
-                  numOfEmployees: 14,
-                  founder: 'Carlos Torres',
-                  id: 3,
-                },
-                {
-                  companyName: 'OpenKompany',
-                  numOfEmployees: 14,
-                  founder: 'Carlos Torres',
-                  id: 4,
-                },
-                {
-                  companyName: 'OpenKompany',
-                  numOfEmployees: 14,
-                  founder: 'Carlos Torres',
-                  id: 5,
-                },
-                {
-                  companyName: 'OpenKompany',
-                  numOfEmployees: 14,
-                  founder: 'Carlos Torres',
-                  id: 6,
-                },
-                {
-                  companyName: 'OpenKompany',
-                  numOfEmployees: 14,
-                  founder: 'Carlos Torres',
-                  id: 7,
-                },
-                {
-                  companyName: 'OpenKompany',
-                  numOfEmployees: 14,
-                  founder: 'Carlos Torres',
-                  id: 8,
-                },
-                {
-                  companyName: 'OpenKompany',
-                  numOfEmployees: 14,
-                  founder: 'Carlos Torres',
-                  id: 9,
-                },
-                {
-                  companyName: 'OpenKompany',
-                  numOfEmployees: 14,
-                  founder: 'Carlos Torres',
-                  id: 10,
-                },
-                {
-                  companyName: 'OpenKompany',
-                  numOfEmployees: 14,
-                  founder: 'Carlos Torres',
-                  id: 11,
-                },
-                {
-                  companyName: 'OpenKompany',
-                  numOfEmployees: 14,
-                  founder: 'Carlos Torres',
-                  id: 12,
-                },
-                {
-                  companyName: 'OpenKompany',
-                  numOfEmployees: 14,
-                  founder: 'Carlos Torres',
-                  id: 13,
-                },
-                {
-                  companyName: 'OpenKompany',
-                  numOfEmployees: 14,
-                  founder: 'Carlos Torres',
-                  id: 14,
-                },
-              ].map((company, i) => (
+              kompanies.map((company, i) => (
                 <CompanyCard
                   key={Date.now() + Math.random() + company.companyName}
                   company={company}

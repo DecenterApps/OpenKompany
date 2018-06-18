@@ -1,32 +1,20 @@
-import IPFS from 'ipfs';
-
-let node;
-
 const replicationNodes = [
   'https://ipfs.decenter.com',
 ];
 
-const bootstrapNodes = [
+export const bootstrapNodes = [
   '/dns4/ipfs.decenter.com/tcp/4443/wss/ipfs/QmWv5BiGHbZNQKg48cA1FLJaiM7aBj4NNDc1HmBkxbxhLz',
 ];
 
 try {
-  node = new IPFS({
-    repo: 'open-kompany',
-    config: {
-      Bootstrap: bootstrapNodes,
-      Addresses: {
-        Swarm: [],
-      },
-    }
-  });
+
 } catch (e) {
   console.error(e);
 }
 
 export const uploadFile = data =>
   new Promise((resolve, reject) => {
-    node.files.add([Buffer.from(JSON.stringify(data))], (err, uploadedFile) => {
+    window.node.files.add([Buffer.from(JSON.stringify(data))], (err, uploadedFile) => {
       if (err) {
         return reject(err);
       }
@@ -60,7 +48,15 @@ export const replicate = (hash, type) => {
     );
 };
 
-node.once('ready', () => {
-  console.log('IPFS Node is ready');
-});
-
+export const getFileContent = async (hash) => {
+  const ipfsTimeout = setTimeout(() => {
+    throw Error('Couldn\'t fetch data. (TIMEOUT)');
+  }, 20000);
+  try {
+    const file = await window.node.files.cat(hash);
+    clearTimeout(ipfsTimeout);
+    return new TextDecoder('utf-8').decode(file);
+  } catch (e) {
+    throw Error(e.message);
+  }
+};

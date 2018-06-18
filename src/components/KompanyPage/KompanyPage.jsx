@@ -22,8 +22,10 @@ class KompanyPage extends React.Component {
   }
 
   componentDidMount() {
-    const id = this.props.match.id || null;
-    this.props.getKompany(id);
+    const hash = this.props.match.params.hash || null;
+    console.log(hash);
+    if (!hash) return;
+    this.props.getKompany(hash);
   }
 
   setActiveTab(tab) {

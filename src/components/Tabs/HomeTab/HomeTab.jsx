@@ -52,7 +52,9 @@ class HomeTab extends React.Component {
             <div className="dark-text label">Employees:</div>
             {
               data.employees && data.employees
-                .map(employee => <div className="light-text employee">{employee.name}</div>)
+                .map((employee, i) => <div key={i} className="light-text employee">
+                  {employee.employeeName}
+                </div>)
             }
           </div>
           <div className="col-1" />

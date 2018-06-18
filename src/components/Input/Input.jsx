@@ -42,7 +42,7 @@ const Input = ({
       <button
         onClick={onButtonClick}
         style={{ height }}
-        className={wideButton && 'wide'}
+        className={wideButton ? 'wide' : undefined}
       >
         {buttonContent}
       </button>

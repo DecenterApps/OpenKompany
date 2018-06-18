@@ -25,7 +25,6 @@ class Outcome extends React.Component {
   }
 
   toggleModal(e) {
-    console.log(1);
     e.stopPropagation();
     e.preventDefault();
     this.setState({

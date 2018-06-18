@@ -3,14 +3,40 @@
 .create-form {
   padding: 62px 0;
 
+  .create-button {
+    margin-top: 35px;
+  }
+
+  .employee-name {
+    margin-top: 10px;
+
+    &:first-child {
+      margin-top: 35px;
+    }
+  }
+
   .columns-wrapper {
     display: flex;
     .form-column {
       flex: 0 1 0;
       flex-wrap: wrap;
 
+      &.long {
+        flex: 2 1 0;
+      }
+
+      &.centered {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-width: 218px;
+        p {
+          margin: 0;
+        }
+      }
+
       &:first-child {
-        margin-right: 150px;
+        margin-right: 48px;
       }
     }
   }
@@ -23,7 +49,7 @@
   }
 
   .input-wrapper {
-    margin-bottom: 35px;
+    margin-bottom: 23px;
     width: 100%;
 
     input {
@@ -32,7 +58,7 @@
   }
 
   .employees {
-    margin-top: 100px;
+    margin-top: 27px;
 
     p {
       font-size: 15px;

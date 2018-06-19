@@ -6,8 +6,9 @@ import Button from '../../../../Button/Button';
 const PayEmployee = ({
   employeeName,
   employeeSalary,
+  employeeWallet,
   handlePay,
-  payedDate = '24.5.2016.',
+  payedDate = null,
 }) => (
   <div className="pay-employee">
     <div className="employee-info">
@@ -16,7 +17,7 @@ const PayEmployee = ({
     </div>
     {
       !payedDate &&
-      <Button width="74px" text="Pay" />
+      <Button width="74px" text="Pay" onClick={() => handlePay(employeeWallet, employeeSalary)} />
     }
     {
       payedDate &&

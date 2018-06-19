@@ -25,3 +25,21 @@ export const payToCompany = (value, rating, message) => {
 
   return true;
 };
+
+export const payService = (value, address) => {
+  console.log(value, address);
+
+  return true;
+};
+
+export const payTeam = (value, address) => {
+  console.log(value, address, new Date());
+
+  return true;
+};
+
+export const payRecurring = (value, address) => {
+  console.log(value, address);
+
+  return true;
+};

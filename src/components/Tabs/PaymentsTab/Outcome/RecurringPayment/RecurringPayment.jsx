@@ -6,30 +6,27 @@ import Button from '../../../../Button/Button';
 class RecurringPayment extends React.Component {
   render() {
     const {
-      name,
-      value,
-      day,
+      recurringName,
+      recurringValue,
+      recurringAddress,
+      recurringDay,
+      handlePay,
     } = this.props;
-    // {
-    //   name: 'Cloud',
-    //     value: 250,
-    //   address: '',
-    //   day: '21',
-    // },
+
     const date = new Date();
     const month = date.getMonth() + 1;
     const year = date.getFullYear();
     return (
       <div className="recurring-payment">
         <div className="payment-name">
-          {name}
+          {recurringName}
         </div>
         <div className="payment-info">
-          <span>{value}</span>
-          <Button text="Pay" width="74px" />
+          <span>{recurringValue}</span>
+          <Button text="Pay" width="74px" onClick={() => handlePay(recurringValue, recurringAddress)} />
         </div>
         <div className="payment-date">
-          {day}.{month}.{year}.
+          {recurringDay}.{month}.{year}.
         </div>
       </div>
     );

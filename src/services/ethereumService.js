@@ -19,3 +19,9 @@ export const executeWhenReady = (method) => {
     }
   }, 10);
 };
+
+export const payToCompany = (value, rating, message) => {
+  console.log(value, rating, message);
+
+  return true;
+};

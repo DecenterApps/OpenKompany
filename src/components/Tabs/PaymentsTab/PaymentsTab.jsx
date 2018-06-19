@@ -15,11 +15,11 @@ class PaymentsTab extends React.Component {
       <div>
         {
           isPaymentsInTab &&
-          <Profit />
+          <Profit kompany={kompany} />
         }
         {
           !isPaymentsInTab &&
-          <Outcome kompany={kompany}/>
+          <Outcome kompany={kompany} />
         }
       </div>
     );

@@ -5,6 +5,8 @@ import Star from './Star';
 import './Profit.scss';
 import Button from '../../../Button/Button';
 
+import { payToCompany } from '../../../../services/ethereumService';
+
 class Profit extends React.Component {
   constructor(props) {
     super(props);
@@ -15,6 +17,16 @@ class Profit extends React.Component {
       message: '',
       hoverIndex: -1,
     };
+
+    this.handlePayToKompany = this.handlePayToKompany.bind(this);
+    this.handleInput = this.handleInput.bind(this);
+  }
+
+
+  handleInput(e) {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
   }
 
   handleStar(i, isClick) {
@@ -36,6 +48,15 @@ class Profit extends React.Component {
     });
   }
 
+  handlePayToKompany(e) {
+    e.preventDefault();
+    const {
+      value, rating, message,
+    } = this.state;
+
+    payToCompany(value, rating, message);
+  }
+
   render() {
     const {
       rating,
@@ -43,15 +64,21 @@ class Profit extends React.Component {
       message,
       hoverIndex,
     } = this.state;
+
+    const {
+      kompany,
+    } = this.props;
+
     const points = [1, 2, 3, 4, 5];
     return (
       <div className="section section-profit">
-        <p className="section-title">Add profit</p>
+        <p className="section-title">Pay to {kompany.data.companyName || 'this kompany'}</p>
         <div>
           <Input
             name="value"
+            type="number"
             placeholder="Value"
-            value={this.state.value}
+            value={value}
             onChange={this.handleInput}
           /> <span className="light-text"> &nbsp;&nbsp;&nbsp;ETH</span>
         </div>
@@ -72,16 +99,16 @@ class Profit extends React.Component {
         </div>
         <div>
           <Input
-            name="search"
-            placeholder="Value"
+            name="message"
+            placeholder="Message"
             width="563px"
             height="192px"
             textarea
-            value={this.state.value}
+            value={message}
             onChange={this.handleInput}
           />
         </div>
-        <Button text="Pay"/>
+        <Button text="Pay" onClick={this.handlePayToKompany} />
       </div>
     );
   }

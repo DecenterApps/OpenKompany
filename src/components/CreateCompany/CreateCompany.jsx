@@ -9,7 +9,7 @@ export default class CreateCompany extends React.Component {
       <div>
         <PageHeader hasLogo />
         <div className="container">
-          <CreateForm />
+          <CreateForm history={this.props.history} />
         </div>
       </div>
     )

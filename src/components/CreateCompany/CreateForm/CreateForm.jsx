@@ -70,6 +70,9 @@ export default class CreateForm extends React.Component {
     kompany.hash = hash;
     saveKompany(kompany);
 
+    // if success redirect
+    this.props.history.push('/');
+
     console.log(hash);
   }
 

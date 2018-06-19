@@ -1,9 +1,13 @@
 .page-header {
-  background: url("./assets/header-bg.png") center center no-repeat;
+  background: url("./assets/header-bg.png") top center no-repeat;
   background-size: cover;
   height: 250px;
   color: #fff;
   font-weight: 300;
+  
+  @media all and (min-width: 1440px) {
+    background: url("./assets/header-bg-1920.png") top center no-repeat;
+  }
 
   .page-header-title {
     padding-top: 75px;

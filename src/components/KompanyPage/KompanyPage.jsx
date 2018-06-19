@@ -64,6 +64,7 @@ class KompanyPage extends React.Component {
                     onClick={this.setActiveTab}
                     isPaymentsInTab={isPaymentsInTab}
                     changePayments={this.changePayments}
+                    userType={kompany.userType}
                   />
                 ))
               }

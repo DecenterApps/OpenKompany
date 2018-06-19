@@ -9,17 +9,18 @@ const TabButton = ({
   onClick,
   isPaymentsInTab,
   changePayments,
+  userType,
 }) => (
   <div
     className={`
     ${activeTab === tab ? 'tab-button active' : 'tab-button'}
-    ${activeTab === 'payments' && 'no-padding'}
+    ${activeTab === 'payments' && userType === 'founder' && 'no-padding'}
       `}
     onClick={() => onClick(tab)}
   >
     {tab.charAt(0).toUpperCase() + tab.slice(1)}
     {
-      tab === 'payments' && activeTab === 'payments' &&
+      userType === 'founder' && tab === 'payments' && activeTab === 'payments' &&
       <div>
         <div
           className={`in-out-button ${isPaymentsInTab && 'active'}`}

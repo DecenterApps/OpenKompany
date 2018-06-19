@@ -34,7 +34,7 @@ class CompanyList extends React.Component {
         <div className="container">
           <div className="company-list-header">
             <Link to="/create_kompany">
-              <Button text="Create OpenKompany" />
+              <Button text="Create an OpenKompany" />
             </Link>
             <Input
               width="250px"

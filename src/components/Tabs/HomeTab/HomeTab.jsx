@@ -17,7 +17,7 @@ class HomeTab extends React.Component {
       );
     }
 
-    const { data } = kompany;
+    const { data, userType } = kompany;
 
     return (
       <div className="home-tab">
@@ -52,9 +52,12 @@ class HomeTab extends React.Component {
             <div className="dark-text label">Employees:</div>
             {
               data.employees && data.employees
-                .map((employee, i) => <div key={i} className="light-text employee">
-                  {employee.employeeName}
-                </div>)
+                .map((employee, i) =>
+                  (
+                    <div key={i} className="light-text employee">
+                      {employee.employeeName}
+                    </div>
+                  ))
             }
           </div>
           <div className="col-1" />
@@ -63,7 +66,10 @@ class HomeTab extends React.Component {
             <div className="light-text vision">{data.vision}</div>
           </div>
         </div>
-        <Button width="117px" text="Edit" />
+        {
+          userType === 'founder' &&
+          <Button width="117px" text="Edit" />
+        }
       </div>
     );
   }

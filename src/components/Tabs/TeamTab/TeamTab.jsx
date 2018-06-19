@@ -159,8 +159,13 @@ class TeamTab extends React.Component {
           </div>
           <Button text="Add to Team" onClick={this.addEmployee} />
         </Modal>
-        <Button text="Add" width="117px" marginRight="19px" onClick={this.toggleModal} />
-        <Button text="Remove" width="117px" />
+        {
+          kompany.userType === 'founder' &&
+          <div>
+            <Button text="Add" width="117px" marginRight="19px" onClick={this.toggleModal} />
+            <Button text="Remove" width="117px" />
+          </div>
+        }
       </div>
     );
   }

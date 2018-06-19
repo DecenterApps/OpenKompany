@@ -7,6 +7,7 @@ import {
 const INITIAL_STATE = {
   isFetching: false,
   data: {},
+  userType: 'founder',
 };
 
 export default (state = INITIAL_STATE, action) => {

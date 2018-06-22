@@ -1,0 +1,68 @@
+@keyframes rotate {
+
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.pending-transaction {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  opacity: 0;
+  z-index: -1;
+
+  transition: opacity 0.3s ease;
+
+  width: 420px;
+  height: 47px;
+
+  background: #FFFFFF;
+  box-shadow: 0 0 24px rgba(138, 134, 253, 0.5);
+  border-radius: 29.5px;
+
+  font-family: 'Varela Round', sans-serif;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px;
+
+  box-sizing: border-box;
+
+  .loader {
+    animation-name: rotate;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+
+    &.no-animation {
+      animation: none;
+    }
+  }
+
+  .tx-hash {
+    font-size: 12px;
+    color: rgba(41, 50, 71, 0.2);
+    max-width: 134px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .pending-tx {
+    border: none;
+    outline: none;
+    box-shadow: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  &.show {
+    opacity: 1;
+    z-index: 10000;
+  }
+}

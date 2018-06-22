@@ -48,12 +48,13 @@ class CompanyList extends React.Component {
           </div>
           <div className="list-wrapper">
             {
-              kompanies.map((company, i) => (
-                <CompanyCard
-                  key={Date.now() + Math.random() + company.companyName}
-                  company={company}
-                />
-              ))
+              kompanies.filter(item => item.companyName.indexOf(this.state.search) !== -1)
+                .map((company, i) => (
+                  <CompanyCard
+                    key={Date.now() + Math.random() + company.companyName}
+                    company={company}
+                  />
+                ))
             }
           </div>
         </div>

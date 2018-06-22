@@ -3,6 +3,7 @@ import React from 'react';
 import Separator from '../Separator/Separator';
 
 import './Transactions.scss';
+import Chart from '../Tabs/TransactionsTab/Chart/Chart';
 
 class Transactions extends React.Component {
   render() {
@@ -43,6 +44,7 @@ class Transactions extends React.Component {
 
     return (
       <div className="transactions">
+        <Chart />
         <div className="row">
           <div className="col-2">
             <div className="dark-text label">transactions</div>

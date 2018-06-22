@@ -2,12 +2,18 @@ import {
   KOMPANY_ERROR,
   KOMPANY_SUCCESS,
   KOMPANY_REQUEST,
+  TRANSACTION_REQUEST,
+  TRANSACTION_SUCCESS,
 } from '../actions/actionTypes';
 
 const INITIAL_STATE = {
   isFetching: false,
   data: {},
   userType: 'founder',
+  pendingTransaction: {
+    isOpen: false,
+    txHash: '',
+  },
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -25,6 +31,25 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         data: payload.data,
         isFetching: payload.isFetching,
+      };
+
+    case TRANSACTION_REQUEST:
+      return {
+        ...state,
+        pendingTransaction: {
+          ...state.pendingTransaction,
+          isOpen: true,
+          txHash: payload.txHash,
+        },
+      };
+
+    case TRANSACTION_SUCCESS:
+      return {
+        ...state,
+        pendingTransaction: {
+          ...state.pendingTransaction,
+          isOpen: false,
+        },
       };
 
     default:

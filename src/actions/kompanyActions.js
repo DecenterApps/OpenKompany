@@ -2,8 +2,21 @@ import {
   KOMPANY_ERROR,
   KOMPANY_REQUEST,
   KOMPANY_SUCCESS,
+  TRANSACTION_REQUEST,
+  TRANSACTION_SUCCESS,
 } from './actionTypes';
 import { getFileContent } from '../services/ipfsService';
+
+export const requestTransaction = (txHash) => ({
+  type: TRANSACTION_REQUEST,
+  payload: {
+    txHash,
+  }
+});
+
+export const successTransaction = () => ({
+  type: TRANSACTION_SUCCESS,
+});
 
 export const getKompanyRequest = () => ({
   type: KOMPANY_REQUEST,

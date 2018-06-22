@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { connect } from 'react-redux';
+
 import './CreateForm.scss';
 
 import Input from '../../Input/Input';
@@ -9,7 +11,9 @@ import Modal from '../../Modal/Modal';
 import { uploadFile } from '../../../services/ipfsService';
 import { saveKompany } from '../../../services/ethereumService';
 
-export default class CreateForm extends React.Component {
+import { requestTransaction, successTransaction } from '../../../actions/kompanyActions';
+
+class CreateForm extends React.Component {
   constructor(props) {
     super(props);
 
@@ -65,6 +69,7 @@ export default class CreateForm extends React.Component {
       contact: this.state.contact,
       employees: this.state.employees,
     };
+
     const hash = await uploadFile(kompany);
 
     kompany.hash = hash;
@@ -267,3 +272,13 @@ export default class CreateForm extends React.Component {
     );
   }
 }
+
+const mapDispatchToProps = {
+  requestTransaction,
+  successTransaction,
+};
+
+export default connect(
+  (state) => state,
+  mapDispatchToProps
+)(CreateForm);

@@ -59,7 +59,7 @@ class PendingTransaction extends React.Component {
              src={success ? succImg : loader} alt="" />
         <span>{success ? 'SUCCESS' : 'PENDING TRANSACTION'}</span>
         <a
-          href={`https://etherscan.io/tx/${'0x0deacdaf968363d42105dd0106ba5ee0f64778e94d9000b97e257656fb64e923'}`}
+          href={`https://rinkeby.etherscan.io/tx/${pendingTransaction.txHash}`}
           className="tx-hash"
           target="_blank"
         >

@@ -17,10 +17,6 @@ const TeamMember = ({ member }) => (
         <div className="dark-text label">Position</div>
         <div className="light-text">{member.employeePosition}</div>
       </div>
-      <div>
-        <div className="dark-text label">Salary</div>
-        <div className="light-text">{member.employeeSalary}</div>
-      </div>
     </div>
   </div>
 );

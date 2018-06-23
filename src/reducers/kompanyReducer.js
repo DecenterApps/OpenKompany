@@ -2,14 +2,19 @@ import {
   KOMPANY_ERROR,
   KOMPANY_SUCCESS,
   KOMPANY_REQUEST,
+  KOMPANIES_ERROR,
+  KOMPANIES_REQUEST,
+  KOMPANIES_SUCCESS,
   TRANSACTION_REQUEST,
-  TRANSACTION_SUCCESS,
+  TRANSACTION_SUCCESS, ICO_SUCCESS,
 } from '../actions/actionTypes';
 
 const INITIAL_STATE = {
   isFetching: false,
+  kompanies: [],
+  icos: [],
   data: {},
-  userType: 'founder',
+  userType: 'user',
   pendingTransaction: {
     isOpen: false,
     txHash: '',
@@ -20,6 +25,18 @@ export default (state = INITIAL_STATE, action) => {
   const { type, payload } = action;
 
   switch (type) {
+    case ICO_SUCCESS:
+      return {
+        ...state,
+        icos: payload.data,
+      };
+
+    case KOMPANIES_SUCCESS:
+      return {
+        ...state,
+        kompanies: payload.kompanies
+      };
+
     case KOMPANY_REQUEST:
       return {
         ...state,
@@ -30,6 +47,7 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         data: payload.data,
+        userType: payload.userType,
         isFetching: payload.isFetching,
       };
 

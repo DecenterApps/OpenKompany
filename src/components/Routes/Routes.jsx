@@ -5,7 +5,6 @@ import Home from '../Home/Home';
 import CreateCompany from '../CreateCompany/CreateCompany';
 import KompanyPage from '../KompanyPage/KompanyPage';
 import store from '../../store';
-import IPFS from 'ipfs';
 import { bootstrapNodes } from '../../services/ipfsService';
 import { executeWhenReady } from '../../services/ethereumService';
 
@@ -20,23 +19,23 @@ class Routes extends React.Component {
   }
 
   componentWillMount() {
-    window.node = new IPFS({
-      repo: 'open-kompany',
-      config: {
-        Bootstrap: bootstrapNodes,
-        Addresses: {
-          Swarm: [],
-        },
-      }
-    });
-
-    node.on('ready', () => {
-      this.setState({
-        ipfsConnected: true,
-      });
-    });
-
     executeWhenReady(() => {
+      window.node = new Ipfs({
+        repo: 'open-kompany',
+        config: {
+          Bootstrap: bootstrapNodes,
+          Addresses: {
+            Swarm: [],
+          },
+        }
+      });
+
+      node.on('ready', () => {
+        this.setState({
+          ipfsConnected: true,
+        });
+      });
+
       console.log(window.web3);
       const hasMetamask = typeof window.web3 !== 'undefined';
 

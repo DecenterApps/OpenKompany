@@ -5,7 +5,9 @@ import Button from '../../Button/Button';
 import { uploadFile } from '../../../services/ipfsService';
 import Input from '../../Input/Input';
 import Modal from '../../Modal/Modal';
-import { saveKompany } from '../../../services/ethereumService';
+import { changeHash, saveKompany } from '../../../services/ethereumService';
+import { requestTransaction, successTransaction } from '../../../actions/kompanyActions';
+import { connect } from 'react-redux';
 
 class TeamTab extends React.Component {
   constructor(props) {
@@ -28,6 +30,11 @@ class TeamTab extends React.Component {
 
   async addEmployee(e) {
     e.preventDefault();
+    const {
+      requestTransaction,
+      successTransaction,
+    } = this.props;
+
     const kompany = {
       employeeName: this.state.employeeName,
       employeePosition: this.state.employeePosition,
@@ -53,10 +60,14 @@ class TeamTab extends React.Component {
       kompany,
     ];
 
-    alterKompany.hash = await uploadFile(alterKompany);
+    const ipfsHash = await uploadFile(alterKompany);
 
-    // Update kompany
-    saveKompany(alterKompany);
+    changeHash(
+      this.props.companyAddress,
+      ipfsHash,
+      requestTransaction,
+      successTransaction,
+    );
 
     this.toggleModal();
   }
@@ -120,15 +131,6 @@ class TeamTab extends React.Component {
           <div className="row">
             <div className="col-2">
               <Input
-                name="employeeSalary"
-                placeholder="Salary"
-                value={this.state.employeeSalary}
-                onChange={this.handleInput}
-                width="216px"
-              />
-            </div>
-            <div className="col-2">
-              <Input
                 name="employeeContact"
                 placeholder="Contact"
                 value={this.state.employeeContact}
@@ -136,6 +138,7 @@ class TeamTab extends React.Component {
                 width="216px"
               />
             </div>
+            <div className="col-2"></div>
           </div>
           <div className="row">
             <Input
@@ -148,22 +151,12 @@ class TeamTab extends React.Component {
               height="150px"
             />
           </div>
-          <div className="row">
-            <Input
-              name="employeeWallet"
-              placeholder="Wallet Address"
-              value={this.state.employeeWallet}
-              onChange={this.handleInput}
-              width="100%"
-            />
-          </div>
           <Button text="Add to Team" onClick={this.addEmployee} />
         </Modal>
         {
           kompany.userType === 'founder' &&
           <div>
             <Button text="Add" width="117px" marginRight="19px" onClick={this.toggleModal} />
-            <Button text="Remove" width="117px" />
           </div>
         }
       </div>
@@ -171,4 +164,14 @@ class TeamTab extends React.Component {
   }
 }
 
-export default TeamTab;
+const mapDispatchToProps = {
+  requestTransaction,
+  successTransaction,
+};
+
+export default connect(
+  (state) => ({
+    companyAddress: state.kompany.data.companyAddress,
+  }),
+  mapDispatchToProps
+)(TeamTab);

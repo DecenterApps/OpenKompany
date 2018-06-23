@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 
 const config = {
   entry: [
@@ -93,6 +94,12 @@ const config = {
       template: path.join(__dirname, 'src/index.html'),
       filename: 'index.html',
     }),
+    new AddAssetHtmlPlugin([
+      {
+        filepath: require.resolve('./lib/ipfs.min.js'),
+        includeSourcemap: false,
+      }
+    ]),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
   ],

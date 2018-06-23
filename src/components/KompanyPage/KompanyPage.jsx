@@ -8,6 +8,7 @@ import TabButton from '../Tabs/TabButton/TabButton';
 import Footer from '../Footer/Footer';
 
 import './KompanyPage.scss';
+import PendingTransaction from '../PendingTransaction/PendingTransaction';
 
 class KompanyPage extends React.Component {
   constructor(props) {
@@ -44,7 +45,7 @@ class KompanyPage extends React.Component {
     const { kompany } = this.props;
     const { activeTab, isPaymentsInTab } = this.state;
 
-    const tabs = ['home', 'team', 'transactions', 'payments'];
+    const tabs = ['home', 'team', 'transactions'];
 
     return (
       <div>
@@ -77,6 +78,7 @@ class KompanyPage extends React.Component {
           </div>
           <Footer />
         </div>
+        <PendingTransaction />
       </div>
     );
   }

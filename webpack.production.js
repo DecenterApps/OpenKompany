@@ -3,6 +3,7 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const config = {
   entry: [
@@ -88,9 +89,15 @@ const config = {
         NODE_ENV: JSON.stringify('production'),
       },
     }),
-    new webpack.optimize.UglifyJsPlugin(),
+    new UglifyJsPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.HotModuleReplacementPlugin(),
+    new AddAssetHtmlPlugin([
+      {
+        filepath: require.resolve('./lib/ipfs.min.js'),
+        includeSourcemap: false,
+      }
+    ]),
     new ExtractTextPlugin({
       filename: 'style.css',
       allChunks: true,
@@ -102,6 +109,7 @@ const config = {
       favicon: 'src/favicon.ico',
       hash: true,
     }),
+  ],
 };
 
 module.exports = config;

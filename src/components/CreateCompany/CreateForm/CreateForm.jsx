@@ -9,7 +9,7 @@ import Button from '../../Button/Button';
 import Modal from '../../Modal/Modal';
 
 import { uploadFile } from '../../../services/ipfsService';
-import { saveKompany } from '../../../services/ethereumService';
+import { createKompany } from '../../../services/ethereumService';
 
 import { requestTransaction, successTransaction } from '../../../actions/kompanyActions';
 
@@ -73,12 +73,13 @@ class CreateForm extends React.Component {
     const hash = await uploadFile(kompany);
 
     kompany.hash = hash;
-    saveKompany(kompany);
-
-    // if success redirect
-    this.props.history.push('/');
-
-    console.log(hash);
+    try {
+      const res = await createKompany(kompany.companyName, hash);
+      this.props.history.push('/');
+      console.log(hash);
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   addEmployee(e) {
@@ -135,13 +136,6 @@ class CreateForm extends React.Component {
           </div>
           <div className="form-column long">
             <Input
-              name="wallet"
-              placeholder="Wallet address"
-              value={this.state.wallet}
-              width="418px"
-              onChange={this.handleInput}
-            />
-            <Input
               name="location"
               placeholder="Kompany location"
               value={this.state.location}
@@ -149,18 +143,15 @@ class CreateForm extends React.Component {
 
               onChange={this.handleInput}
             />
-          </div>
-        </div>
-        <div className="columns-wrapper">
-          <div className="form-column">
             <Input
               name="contact"
               placeholder="Contact"
               value={this.state.contact}
               onChange={this.handleInput}
+              width="418px"
+
             />
           </div>
-          <div className="form-column" />
         </div>
         <div className="columns-wrapper">
           <div className="form-column">
@@ -226,25 +217,13 @@ class CreateForm extends React.Component {
             </div>
           </div>
           <div className="row">
-            <div className="col-2">
-              <Input
-                name="employeeSalary"
-                placeholder="Salary"
-                type="number"
-                value={this.state.employeeSalary}
-                onChange={this.handleInput}
-                width="216px"
-              />
-            </div>
-            <div className="col-2">
-              <Input
-                name="employeeContact"
-                placeholder="Contact"
-                value={this.state.employeeContact}
-                onChange={this.handleInput}
-                width="216px"
-              />
-            </div>
+            <Input
+              name="employeeContact"
+              placeholder="Contact"
+              value={this.state.employeeContact}
+              onChange={this.handleInput}
+              width="216px"
+            />
           </div>
           <div className="row">
             <Input
@@ -255,15 +234,6 @@ class CreateForm extends React.Component {
               onChange={this.handleInput}
               width="100%"
               height="150px"
-            />
-          </div>
-          <div className="row">
-            <Input
-              name="employeeWallet"
-              placeholder="Wallet Address"
-              value={this.state.employeeWallet}
-              onChange={this.handleInput}
-              width="100%"
             />
           </div>
           <Button text="Add to Team" onClick={this.addEmployee} />

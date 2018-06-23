@@ -58,18 +58,20 @@ class IcoPage extends React.Component {
     } = this.state;
 
     try {
-      await buyTokens(
+      buyTokens(
         this.props.ico.icoAddress,
         this.props.ico.price,
         amount,
         this.props.requestTransaction,
         this.props.successTransaction,
       );
+      this.toggleModal();
     } catch (e) {
       console.error(e);
     }
-
-    this.toggleModal();
+    this.setState({
+      amount: '',
+    })
   }
 
   render() {

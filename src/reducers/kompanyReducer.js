@@ -6,13 +6,16 @@ import {
   KOMPANIES_REQUEST,
   KOMPANIES_SUCCESS,
   TRANSACTION_REQUEST,
-  TRANSACTION_SUCCESS, ICO_SUCCESS,
+  TRANSACTION_SUCCESS,
+  ICOS_SUCCESS,
+  ICO_SUCCESS,
 } from '../actions/actionTypes';
 
 const INITIAL_STATE = {
   isFetching: false,
   kompanies: [],
   icos: [],
+  ico: null,
   data: {},
   userType: 'user',
   pendingTransaction: {
@@ -26,6 +29,12 @@ export default (state = INITIAL_STATE, action) => {
 
   switch (type) {
     case ICO_SUCCESS:
+      return {
+        ...state,
+        ico: payload.ico,
+      };
+
+    case ICOS_SUCCESS:
       return {
         ...state,
         icos: payload.data,

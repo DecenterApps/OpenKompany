@@ -3,6 +3,10 @@ export const KOMPANY_REQUEST = 'KOMPANY_REQUEST';
 export const KOMPANY_SUCCESS = 'KOMPANY_SUCCESS';
 export const KOMPANY_ERROR = 'KOMPANY_ERROR';
 
+export const ICOS_REQUEST = 'ICOS_REQUEST';
+export const ICOS_SUCCESS = 'ICOS_SUCCESS';
+export const ICOS_ERROR = 'ICOS_ERROR';
+
 export const ICO_REQUEST = 'ICO_REQUEST';
 export const ICO_SUCCESS = 'ICO_SUCCESS';
 export const ICO_ERROR = 'ICO_ERROR';

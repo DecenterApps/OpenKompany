@@ -14,6 +14,10 @@ body {
 .container {
   max-width: 860px;
   margin: 0 auto;
+
+  &.padded {
+    padding-top: 45px;
+  }
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */

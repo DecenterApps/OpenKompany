@@ -7,6 +7,7 @@ import KompanyPage from '../KompanyPage/KompanyPage';
 import store from '../../store';
 import { bootstrapNodes } from '../../services/ipfsService';
 import { executeWhenReady } from '../../services/ethereumService';
+import IcoPage from '../IcoPage/IcoPage';
 
 class Routes extends React.Component {
   constructor(props) {
@@ -71,6 +72,7 @@ class Routes extends React.Component {
           <Route exact path="/" component={Home} />
           <Route path="/create_kompany" component={CreateCompany} />
           <Route path="/kompany/:hash" component={KompanyPage} />
+          <Route path="/ico/:hash" component={IcoPage} />
         </div>
       </Router>
     );

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import '../CompanyCard/CompanyCard.scss';
 
 const CompanyICOCard = ({ ico }) => (
-  <Link to={`/ico/${ico.icoAddress}`} className="company-card">
+  <Link to={`/ico/${ico.companyAddress}`} className="company-card">
     <p className="company-title">{ico.name} ({ico.symbol})</p>
     <div className="company-stats">
       <p><span className="stat-label">Decimals: </span> {ico.decimals.toString()}</p>

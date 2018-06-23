@@ -1,5 +1,6 @@
 import {
   ICO_SUCCESS,
+  ICOS_SUCCESS,
   KOMPANIES_SUCCESS,
   KOMPANY_ERROR,
   KOMPANY_REQUEST,
@@ -8,7 +9,12 @@ import {
   TRANSACTION_SUCCESS,
 } from './actionTypes';
 import { getFileContent } from '../services/ipfsService';
-import { getCompanies, getLatestIpfsHash, getIcos } from '../services/ethereumService';
+import {
+  getCompanies,
+  getLatestIpfsHash,
+  getIcos,
+  getTokenInfo, getIco
+} from '../services/ethereumService';
 
 export const requestTransaction = (txHash) => ({
   type: TRANSACTION_REQUEST,
@@ -78,8 +84,8 @@ export const getKompanies = () => async (dispatch) => {
   dispatch(getKompaniesSuccess(data));
 };
 
-export const getIcoSuccess = data => ({
-  type: ICO_SUCCESS,
+export const getIcosSuccess = data => ({
+  type: ICOS_SUCCESS,
   payload: {
     data,
   },
@@ -89,5 +95,18 @@ export const getCurrentIcos = () => async (dispatch) => {
   const icos = await getIcos();
   console.log(icos);
 
-  dispatch(getIcoSuccess(icos));
+  dispatch(getIcosSuccess(icos));
+};
+
+export const getIcoSuccess = ico => ({
+  type: ICO_SUCCESS,
+  payload: {
+    ico,
+  }
+});
+
+export const getCurrentIco = (address) => async (dispatch) => {
+  const ico = await getIco(address);
+
+  dispatch(getIcoSuccess(ico));
 };

@@ -1,3 +1,5 @@
+@import "../../styles/variables/colors";
+
 .modal-wrapper {
   opacity: 0;
   position: fixed;
@@ -59,6 +61,15 @@
 
       .col-2:last-child {
         text-align: right;
+
+        &.price {
+          display: flex;
+          text-align: left;
+          color: $gray;
+          font-family: 'Varela Round', sans-serif;
+          align-items: center;
+          font-size: 12px;
+        }
         .input-wrapper {
           text-align: right;
         }

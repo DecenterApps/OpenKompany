@@ -116,6 +116,7 @@ export const getIcos = () =>
             ...tokenInfo,
             price: web3.fromWei(price, 'ether'),
             icoAddress: company.icoContract,
+            companyAddress: company.companyAddress,
           });
         }
 
@@ -175,6 +176,22 @@ export const getCompany = (address) =>
     });
   });
 
+export const getIco = (address) =>
+  new Promise(async (resolve, reject) => {
+    try {
+      const company = await getCompany(address);
+      const tokenInfo = await getTokenInfo(company.icoToken);
+      const price = await getTokenPrice(company.icoContract);
+      resolve({
+        ...tokenInfo,
+        price: web3.fromWei(price, 'ether'),
+        icoAddress: company.icoContract,
+      });
+    } catch (e) {
+      reject(e);
+    }
+  });
+
 export const createIco = (company, name, symbol, decimals, req, suc) =>
   new Promise((resolve, reject) => {
     const contract = getCompanyContract();
@@ -228,6 +245,36 @@ export const changeHash = (address, ipfsHash, req, suc) =>
         }, (err, data) => {
           resolve(data);
           suc(data);
+        });
+      });
+  });
+
+export const buyTokens = (address, price, amount, req, suc) =>
+  new Promise((resolve, reject) => {
+    const contract = getIcoContract(address);
+
+    console.log(address, amount);
+    console.log(contract);
+    console.log(parseInt(amount, 10) * parseFloat(price));
+
+    contract.buyToken(
+      parseInt(amount, 10),
+      {
+        from: web3.eth.accounts[0],
+        value: web3.toWei(parseInt(amount, 10) * parseFloat(price))
+      },
+      (err, txHash) => {
+        console.log(1);
+        if (err) {
+          return reject(err);
+        }
+        req(txHash);
+        contract.TokensBought({ user: web3.eth.accounts[0] }, (err, data) => {
+          if (err) {
+            return reject(err);
+          }
+          suc();
+          resolve(data)
         });
       });
   });

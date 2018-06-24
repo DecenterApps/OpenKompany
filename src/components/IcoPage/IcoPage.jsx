@@ -78,6 +78,7 @@ class IcoPage extends React.Component {
     const { ico } = this.props;
 
     if (!ico) return <div>Loading...</div>;
+    const value = ico.balance * ico.price;
 
     return (
       <div>
@@ -109,7 +110,10 @@ class IcoPage extends React.Component {
                 <p className="dark-text label">Price:</p>
                 <p className="light-text">{ico.price.toString()} Ξ</p>
               </div>
-              <div className="col-2" />
+              <div className="col-2">
+                <p className="dark-text label">Your Balance:</p>
+                <p className="light-text">{ico.balance.toString()} {ico.symbol} ({value.toString()}Ξ)</p>
+              </div>
             </div>
             <Separator />
             <Button text={'Buy tokens'} onClick={this.toggleModal} />

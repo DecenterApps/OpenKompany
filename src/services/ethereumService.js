@@ -267,16 +267,42 @@ export const getLatestIpfsHash = (address) =>
       });
   });
 
+export const getTokenBalance = (address) =>
+  new Promise((resolve, reject) => {
+    const contract = getIcoContract(address);
+
+    contract.TokensBought({ user: web3.eth.accounts[0] }, {
+      fromBlock: 0,
+      toBlock: 'latest',
+    }).get((err, events) => {
+      if (err) {
+        return reject(err);
+      }
+
+      console.log(events);
+
+      const balance = events.reduce((acc, event) => {
+        console.log(event);
+        const balance = event.args.numOfTokens.toString();
+        return acc + parseFloat(balance);
+      }, 0);
+
+      resolve(balance);
+    });
+  });
+
 export const getIco = (address) =>
   new Promise(async (resolve, reject) => {
     try {
       const company = await getCompany(address);
       const tokenInfo = await getTokenInfo(company.icoToken);
       const price = await getTokenPrice(company.icoContract);
+      const balance = await getTokenBalance(company.icoContract);
       resolve({
         ...tokenInfo,
         price: web3.fromWei(price, 'ether'),
         icoAddress: company.icoContract,
+        balance,
       });
     } catch (e) {
       reject(e);

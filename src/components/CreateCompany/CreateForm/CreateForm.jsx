@@ -74,7 +74,12 @@ class CreateForm extends React.Component {
 
     kompany.hash = hash;
     try {
-      const res = await createKompany(kompany.companyName, hash);
+      createKompany(
+        kompany.companyName,
+        hash,
+        this.props.requestTransaction,
+        this.props.successTransaction,
+      );
       this.props.history.push('/');
       console.log(hash);
     } catch (e) {
@@ -108,9 +113,9 @@ class CreateForm extends React.Component {
           employeeSalary,
           employeeContact,
           employeeContract,
-          employeeWallet
-        }
-      ]
+          employeeWallet,
+        },
+      ],
     });
     this.toggleModal();
   }

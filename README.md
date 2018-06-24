@@ -1,4 +1,27 @@
 # OpenKompany
-Our idea is to be a platform for decentralized and publicly transparent companies. 
-You can add your employees, perform/receive payments and have public and open statistics.
 
+
+### Preqrequisites
+You need to have node.js and webpack installed on your machine.
+ 
+ 
+## Buidling locally
+
+```
+yarn
+yarn dev
+- OR -
+npm install 
+npm run dev
+```
+
+## Building a production bundle
+
+```
+yarn
+yarn prod
+- OR -
+npm install 
+npm run prod
+
+```

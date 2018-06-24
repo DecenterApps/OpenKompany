@@ -9,7 +9,26 @@ const getIcoContract = (contractAddress) =>
 const getTokenContract = (contractAddress) =>
   web3.eth.contract(config.tokenAbi).at(contractAddress);
 
-export const createKompany = (companyName, ipfsHash) =>
+export const getCompany = (address) =>
+  new Promise((resolve, reject) => {
+    const contract = getCompanyContract();
+
+    contract.companies(address, (err, data) => {
+      if (err) {
+        return reject(err);
+      }
+      resolve({
+        companyAddress: address,
+        tokenAddress: data[0],
+        ipfsHash: data[1],
+        owner: data[2],
+        icoToken: data[3],
+        icoContract: data[4],
+      });
+    });
+  });
+
+export const createKompany = (companyName, ipfsHash, req, suc) =>
   new Promise((resolve, reject) => {
     const contract = getCompanyContract();
     const TOKEN = {
@@ -25,15 +44,20 @@ export const createKompany = (companyName, ipfsHash) =>
       ipfsHash,
       {
         from: web3.eth.accounts[0],
-      }, (err, data) => {
+      }, (err, txHash) => {
         if (err) {
           return reject(err);
         }
+        req(txHash);
 
         contract.CompanyCreated({ owner: web3.eth.accounts[0] }, {
-          fromBlock: 0,
-          toBlock: 'latest'
+          fromBlock: 'latest',
+          toBlock: 'latest',
         }, (err, data) => {
+          if (err) {
+            return reject(err);
+          }
+          suc(data);
           resolve(data);
         });
       });
@@ -132,6 +156,7 @@ export const getLatestIpfsHash = (address) =>
         if (err) {
           return reject(err);
         }
+        console.log(events);
         if (events.length > 0) {
           const company = await getCompany(events[events.length - 1].args.company);
           resolve({
@@ -157,28 +182,10 @@ export const getLatestIpfsHash = (address) =>
       });
   });
 
-export const getCompany = (address) =>
-  new Promise((resolve, reject) => {
-    const contract = getCompanyContract();
-
-    contract.companies(address, (err, data) => {
-      if (err) {
-        return reject(err);
-      }
-      resolve({
-        companyAddress: address,
-        tokenAddress: data[0],
-        ipfsHash: data[1],
-        owner: data[2],
-        icoToken: data[3],
-        icoContract: data[4],
-      });
-    });
-  });
-
 export const getIco = (address) =>
   new Promise(async (resolve, reject) => {
     try {
+      console.log(address);
       const company = await getCompany(address);
       const tokenInfo = await getTokenInfo(company.icoToken);
       const price = await getTokenPrice(company.icoContract);
@@ -274,7 +281,7 @@ export const buyTokens = (address, price, amount, req, suc) =>
             return reject(err);
           }
           suc();
-          resolve(data)
+          resolve(data);
         });
       });
   });

@@ -1,90 +1,7 @@
 {
   "colonyNetwork": "0xD4C145EbdC7f072d10a07b8ea4515AF996EE437c",
-  "kompanyContract": "0x4D039139e0d7e8E4C328766932Aad61a1c108B28",
+  "kompanyContract": "0x41bb8aC4187745B08d597E551f1De33806682842",
   "kompanyAbi": [
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_colony",
-          "type": "address"
-        },
-        {
-          "name": "_newIpfs",
-          "type": "string"
-        }
-      ],
-      "name": "changeHash",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": false,
-          "name": "company",
-          "type": "address"
-        },
-        {
-          "indexed": false,
-          "name": "token",
-          "type": "address"
-        },
-        {
-          "indexed": false,
-          "name": "owner",
-          "type": "address"
-        }
-      ],
-      "name": "CompanyCreated",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": false,
-          "name": "company",
-          "type": "address"
-        },
-        {
-          "indexed": false,
-          "name": "newIpfs",
-          "type": "string"
-        }
-      ],
-      "name": "CompanyEdited",
-      "type": "event"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_name",
-          "type": "bytes32"
-        },
-        {
-          "name": "_symbol",
-          "type": "bytes32"
-        },
-        {
-          "name": "_decimals",
-          "type": "uint256"
-        },
-        {
-          "name": "_ipfsHash",
-          "type": "string"
-        }
-      ],
-      "name": "createCompany",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
     {
       "constant": false,
       "inputs": [
@@ -110,29 +27,6 @@
       "payable": false,
       "stateMutability": "nonpayable",
       "type": "function"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": false,
-          "name": "company",
-          "type": "address"
-        }
-      ],
-      "name": "IcoCreated",
-      "type": "event"
-    },
-    {
-      "inputs": [
-        {
-          "name": "_etherRouter",
-          "type": "address"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "constructor"
     },
     {
       "constant": true,
@@ -170,6 +64,64 @@
       "type": "function"
     },
     {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_colony",
+          "type": "address"
+        },
+        {
+          "name": "_newIpfs",
+          "type": "string"
+        }
+      ],
+      "name": "changeHash",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_name",
+          "type": "bytes32"
+        },
+        {
+          "name": "_symbol",
+          "type": "bytes32"
+        },
+        {
+          "name": "_decimals",
+          "type": "uint256"
+        },
+        {
+          "name": "_ipfsHash",
+          "type": "string"
+        }
+      ],
+      "name": "createCompany",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "etherRouter",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
       "constant": true,
       "inputs": [
         {
@@ -189,18 +141,61 @@
       "type": "function"
     },
     {
-      "constant": true,
       "inputs": [],
-      "name": "etherRouter",
-      "outputs": [
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
         {
-          "name": "",
+          "indexed": true,
+          "name": "company",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "owner",
           "type": "address"
         }
       ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
+      "name": "CompanyCreated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "company",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "newIpfs",
+          "type": "string"
+        }
+      ],
+      "name": "CompanyEdited",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "company",
+          "type": "address"
+        }
+      ],
+      "name": "IcoCreated",
+      "type": "event"
     }
   ],
   "tokenAbi": [
@@ -583,6 +578,34 @@
   ],
   "icoAbi": [
     {
+      "constant": true,
+      "inputs": [],
+      "name": "dateCreated",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "isActive",
+      "outputs": [
+        {
+          "name": "active",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
       "constant": false,
       "inputs": [
         {
@@ -657,7 +680,7 @@
       "anonymous": false,
       "inputs": [
         {
-          "indexed": false,
+          "indexed": true,
           "name": "user",
           "type": "address"
         },

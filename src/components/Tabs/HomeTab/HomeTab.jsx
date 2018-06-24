@@ -49,7 +49,7 @@ class HomeTab extends React.Component {
       tokenDecimals,
     } = this.state;
 
-    await createIco(
+    createIco(
       this.props.companyAddress,
       tokenName,
       tokenSymbol,
@@ -57,6 +57,8 @@ class HomeTab extends React.Component {
       this.props.requestTransaction,
       this.props.successTransaction,
     );
+
+    this.toggleModal();
   }
 
   render() {
@@ -80,8 +82,8 @@ class HomeTab extends React.Component {
             <p className="light-text">{data.founder}</p>
           </div>
           <div className="col-1">
-            {/*<p className="dark-text label">ID:</p>*/}
-            {/*<p className="light-text">{data.legalID}</p>*/}
+            <p className="dark-text label">Balance:</p>
+            <p className="light-text">{web3.fromWei(data.balance, 'ether')} Ξ</p>
           </div>
           <div className="col-2">
             {/*<p className="dark-text label">Wallet address:</p>*/}

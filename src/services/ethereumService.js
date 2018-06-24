@@ -3,20 +3,100 @@ import config from './config.json';
 const getCompanyContract = () =>
   web3.eth.contract(config.kompanyAbi).at(config.kompanyContract.toString());
 
-const getIcoContract = (contractAddress) =>
+const getIcoContract = contractAddress =>
   web3.eth.contract(config.icoAbi).at(contractAddress);
 
-const getTokenContract = (contractAddress) =>
+const getTokenContract = contractAddress =>
   web3.eth.contract(config.tokenAbi).at(contractAddress);
 
-export const getCompany = (address) =>
-  new Promise((resolve, reject) => {
-    const contract = getCompanyContract();
+const getColonyContract = contractAddress =>
+  web3.eth.contract(config.colonyAbi).at(contractAddress);
 
-    contract.companies(address, (err, data) => {
+const getColonyStorageContract = contractAddress =>
+  web3.eth.contract(config.storageAbi).at(contractAddress);
+
+const getColonyNetworkContract = contractAddress =>
+  web3.eth.contract(config.networkAbi).at(config.colonyNetwork);
+
+export const getBalance = address =>
+  new Promise((resolve, reject) => {
+    web3.eth.getBalance(address, (err, balance) => {
       if (err) {
         return reject(err);
       }
+
+      resolve(balance.toString());
+    });
+  });
+
+export const getTask = (id, address) =>
+  new Promise((resolve, reject) => {
+    const contract = getColonyContract(address);
+
+    contract.getTask(id, (err, data) => {
+      if (err) {
+        return reject(err);
+      }
+      resolve(data);
+    });
+  });
+
+export const getPotBalance = (id, token, address) =>
+  new Promise((resolve, reject) => {
+    const contract = getColonyContract(address);
+
+    contract.getPotBalance(id, token, (err, data) => {
+      if (err) {
+        return reject(err);
+      }
+
+      resolve(data);
+    });
+  });
+
+export const getTasks = (address, token) =>
+  new Promise((resolve, reject) => {
+    const contract = getColonyContract(address);
+
+    contract.TaskAdded({}, { fromBlock: 0, toBlock: 'latest' })
+      .get(async (err, events) => {
+        if (err) {
+          return reject(err);
+        }
+
+        const tasks = [];
+        for (let i = 0; i < events.length; i++) {
+          const task = await getTask(events[i].args.id, address);
+          const balance = await getPotBalance(task[6], token, address);
+          tasks.push({
+            taskId: events[i].args.id.toString(),
+            briefHash: task[0],
+            deliverableHash: task[1],
+            finalised: task[2],
+            cancelled: task[3],
+            dueDate: task[4].toString(),
+            numPayouts: task[5].toString(),
+            fundingPotId: task[6].toString(),
+            submissionTimestamp: task[7].toString(),
+            domainId: task[8].toString(),
+            balance: balance.toString(),
+          });
+        }
+        console.log(events, tasks);
+        resolve(tasks);
+      });
+  });
+
+export const getCompany = address =>
+  new Promise((resolve, reject) => {
+    const contract = getCompanyContract();
+
+    contract.companies(address, async (err, data) => {
+      if (err) {
+        return reject(err);
+      }
+
+      const balance = await getBalance(address);
       resolve({
         companyAddress: address,
         tokenAddress: data[0],
@@ -24,6 +104,7 @@ export const getCompany = (address) =>
         owner: data[2],
         icoToken: data[3],
         icoContract: data[4],
+        balance,
       });
     });
   });
@@ -163,6 +244,8 @@ export const getLatestIpfsHash = (address) =>
             ipfsHash: events[events.length - 1].args.newIpfs,
             owner: company.owner,
             companyAddress: company.companyAddress,
+            tokenAddress: company.tokenAddress,
+            balance: company.balance,
           });
         } else {
           contract.CompanyCreated({ company: address }, { fromBlock: 0, toBlock: 'latest' })
@@ -176,6 +259,8 @@ export const getLatestIpfsHash = (address) =>
                 ipfsHash: company.ipfsHash,
                 owner: company.owner,
                 companyAddress: company.companyAddress,
+                tokenAddress: company.tokenAddress,
+                balance: company.balance,
               });
             });
         }
@@ -185,7 +270,6 @@ export const getLatestIpfsHash = (address) =>
 export const getIco = (address) =>
   new Promise(async (resolve, reject) => {
     try {
-      console.log(address);
       const company = await getCompany(address);
       const tokenInfo = await getTokenInfo(company.icoToken);
       const price = await getTokenPrice(company.icoContract);
@@ -261,14 +345,12 @@ export const buyTokens = (address, price, amount, req, suc) =>
     const contract = getIcoContract(address);
 
     console.log(address, amount);
-    console.log(contract);
-    console.log(parseInt(amount, 10) * parseFloat(price));
 
     contract.buyToken(
       parseInt(amount, 10),
       {
         from: web3.eth.accounts[0],
-        value: web3.toWei(parseInt(amount, 10) * parseFloat(price))
+        value: web3.toWei(parseInt(amount, 10) * parseFloat(price)),
       },
       (err, txHash) => {
         console.log(1);
@@ -331,3 +413,4 @@ export const payRecurring = (value, address) => {
 
   return true;
 };
+

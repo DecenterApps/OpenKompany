@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './PageHeader.scss';
 
@@ -9,13 +10,25 @@ const PageHeader = ({ hasLogo, companyName, description }) => (
     {
       hasLogo &&
       <div className="page-header-logo">
-        <img src={logo} alt="Logo" />
-        <p>OpenKompany</p>
+        <Link to="/">
+          <img src={logo} alt="Logo" />
+          <p>OpenKompany</p>
+        </Link>
       </div>
     }
     {
       !hasLogo &&
       <div className="container">
+        <div className="nav-links">
+          <Link to="/" className="logo-nav">
+            <img src={logo} alt="" />
+            OpenKompany
+          </Link>
+
+          <Link to="/" className="link-nav">
+            Home
+          </Link>
+        </div>
         <p className="page-header-title">{companyName}</p>
         <p className="page-header-description">{description}</p>
       </div>

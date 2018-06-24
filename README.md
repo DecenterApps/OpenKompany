@@ -3,6 +3,8 @@
 
 ### Preqrequisites
 You need to have node.js and webpack installed on your machine.
+
+To use the app, you need to have MetaMask installed and point it to the Rinkeby testnet.
  
  
 ## Buidling locally

@@ -45,7 +45,7 @@ class KompanyPage extends React.Component {
     const { kompany } = this.props;
     const { activeTab, isPaymentsInTab } = this.state;
 
-    const tabs = ['home', 'team', 'transactions'];
+    const tabs = ['home', 'team', 'transactions', 'tasks'];
 
     return (
       <div>

@@ -4,6 +4,7 @@ import HomeTab from './HomeTab/HomeTab';
 import TeamTab from './TeamTab/TeamTab';
 import TransactionsTab from './TransactionsTab/TransactionsTab';
 import PaymentsTab from './PaymentsTab/PaymentsTab';
+import TasksTab from './TasksTab/TasksTab';
 
 const Tabs = ({ tab, kompany, isPaymentsInTab }) => (
   <div>
@@ -18,6 +19,10 @@ const Tabs = ({ tab, kompany, isPaymentsInTab }) => (
     {
       tab === 'transactions' &&
       <TransactionsTab kompany={kompany} />
+    }
+    {
+      tab === 'tasks' &&
+      <TasksTab kompany={kompany} />
     }
     {
       tab === 'payments' &&

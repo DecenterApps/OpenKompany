@@ -4,9 +4,33 @@
   height: 250px;
   color: #fff;
   font-weight: 300;
-  
+
   @media all and (min-width: 1440px) {
     background: url("./assets/header-bg-1920.png") top center no-repeat;
+  }
+
+  .nav-links {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    align-items: center;
+    font-size: 15px;
+    font-family: 'Varela Round', sans-serif;
+
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .logo-nav {
+      display: flex;
+      align-items: center;
+
+      img {
+        margin-right: 15px;
+        height: 30px;
+      }
+    }
   }
 
   .page-header-title {
@@ -38,10 +62,12 @@
       margin: 15px auto;
     }
 
-    p {
+    p, a {
       font-size: 25px;
       font-family: 'Varela Round', sans-serif;
       font-weight: normal;
+      text-decoration: none;
+      color: #fff;
     }
   }
 }

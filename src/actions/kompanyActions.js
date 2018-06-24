@@ -53,12 +53,20 @@ export const getKompanyError = error => ({
 
 export const getKompany = address => async (dispatch) => {
   dispatch(getKompanyRequest());
-  const { ipfsHash, owner, companyAddress } = await getLatestIpfsHash(address);
+  const {
+    ipfsHash,
+    owner,
+    companyAddress,
+    tokenAddress,
+    balance,
+  } = await getLatestIpfsHash(address);
   const kompany = await getFileContent(ipfsHash);
   const userType = owner === web3.eth.accounts[0] ? 'founder' : 'user';
   dispatch(getKompanySuccess({
     ...JSON.parse(kompany),
     companyAddress,
+    tokenAddress,
+    balance,
   }, userType));
 };
 
@@ -102,7 +110,7 @@ export const getIcoSuccess = ico => ({
   type: ICO_SUCCESS,
   payload: {
     ico,
-  }
+  },
 });
 
 export const getCurrentIco = (address) => async (dispatch) => {
